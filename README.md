@@ -23,3 +23,5 @@ Connecting to the remote box? Options include:
 
 Principal advantage of PSEXEC is that we can run anything, e.g. Chocolately. Can we do the same with remote Powershell?
 Remote Powershell is simpler if we can get it to work, not least as it pipelines output back to the host machine.
+However, may not work properly for machines that don't have remote Powershell enabled: could need jiggery-pokery
+with PSEXEC to get it started.
