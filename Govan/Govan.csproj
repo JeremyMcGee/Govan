@@ -50,7 +50,13 @@
     <Compile Include="Commands\Check.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Entities\Computer.cs" />
     <Compile Include="Runners\IRunner.cs" />
+    <Compile Include="Runners\PowershellRunner.cs" />
+    <Compile Include="Runners\PsExecRunner.cs" />
+    <Compile Include="Runners\Runner.cs" />
+    <Compile Include="Runners\RunnerFactory.cs" />
+    <Compile Include="Runners\RunnerType.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
