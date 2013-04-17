@@ -36,7 +36,7 @@ namespace Govan.Runners
 
     public interface IRunner
     {
-
+        void ExecuteCommand(string command);
     }
 
     abstract public class Runner
@@ -54,7 +54,10 @@ namespace Govan.Runners
         public PsExecRunner(Computer computer)
             : base(computer)
         {
+        }
 
+        public void ExecuteCommand(string command)
+        {
         }
     }
 
@@ -63,7 +66,10 @@ namespace Govan.Runners
         public PowershellRunner(Computer computer)
             : base(computer)
         {
+        }
 
+        public void ExecuteCommand(string command)
+        {
         }
     }
 
@@ -71,6 +77,10 @@ namespace Govan.Runners
     {
         public virtual string Name { get; private set; }
 
+        public Computer(string name)
+        {
+            this.Name = name;
+        }
 
     }
 }
