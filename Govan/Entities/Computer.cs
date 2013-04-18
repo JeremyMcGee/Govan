@@ -8,11 +8,14 @@ namespace Govan.Entities
 
     public class Computer
     {
-        public virtual string Name { get; private set; }
+        public string Name { get; private set; }
 
-        public Computer(string name)
+        public string AdminPassword { get; private set; }
+
+        public Computer(string name, string adminPassword)
         {
             this.Name = name;
+            this.AdminPassword = adminPassword;
         }
     }
 }

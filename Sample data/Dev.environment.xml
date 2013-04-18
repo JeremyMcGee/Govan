@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<servers>
+	<server name="hostdev1" adminPassword="foobah" localIP="10.202.0.71" settingsTemplate="IIS server layout.xml" />
+	<server name="hostdev2" adminPassword="foobah" localIP="10.202.0.72" settingsTemplate="IIS server layout.xml" />
+</server>

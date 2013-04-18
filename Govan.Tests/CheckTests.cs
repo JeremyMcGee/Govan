@@ -29,22 +29,41 @@
 
             Mock<RunnerFactory> mockRunnerFactory = new Mock<RunnerFactory>(MockBehavior.Strict);
             mockRunnerFactory
-                .Setup(mrf => mrf.Create(actualRunnerType, It.Is<Computer>(c => c.Name == "mycomputer")))
+                .Setup(mrf => mrf.Create(actualRunnerType, 
+                    It.Is<Computer>(c => (c.Name == "mycomputer") && (c.AdminPassword == "foobah"))))
                 .Returns(runner.Object);
 
             // when
             Check check = new Check(mockRunnerFactory.Object);
 
             StringWriter output = new StringWriter();
-            ConsoleCommandDispatcher.DispatchCommand(check,
-                new[] { "-runnertype", runnerTypeParameter, "-computername", "mycomputer" }, 
-            output);
+            ConsoleCommandDispatcher.DispatchCommand(
+                check,
+                new[] 
+                { 
+                    "-runnertype", runnerTypeParameter, 
+                    "-computername", "mycomputer",
+                    "-adminpassword", "foobah"
+                },
+                output);
 
             int result = check.Run(new string[] { });
             Assert.That(result, Is.EqualTo(0));
 
             runner.VerifyAll();
             mockRunnerFactory.VerifyAll();
+        }
+
+        [Test]
+        public void CanCallFactoryMultipleTimesWhenNoRunnerTypeSpecified()
+        {
+            Assert.Fail();
+        }
+
+        [Test]
+        public void FailedCheckCausesNonZeroReturnCode()
+        {
+            Assert.Fail();
         }
     }
 }

@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <server>
-	<name>hostdev1</name>
-	<host>hostdev1.mydomain.com</host>
+	<host>%servername%.mydomain.com</host>
 	<certificates>
 		<certificate name="gPlan Dev SLL cert" thumbprint="xxx" store="My" />
 		<certificate name="TIGIssuer1CA" thumbprint="yyy" store="IntermediateCA" />
 		<certificate name="TIGRootCA" thumprint="zzz" store="TrustedCA"/>
 	</certificates>
-	<network adapter="0">
-		<localip>10.202.0.73<localip>
-	<network>
 	<iis>
-		<applicationPool name="DefaultAppPool" replace="true">
+		<applicationPool name="DefaultAppPool">
 			<enable32bit>true</enable32bit>
 			<loadUserProfile>true</loadUserProfile>
 			<localFolders>
@@ -20,16 +16,23 @@
 				<localFolder permissions="all">c:\log</localFolder>
 			</localFolders>
 		</applicationPool>
-		<website applicationPool="DefaultAppPool" replace="true">
+		<website applicationPool="DefaultAppPool">
 			<binding protocol="http" />
 			<binding protocol="https" certificateIssuedTo="dev.mydomain.com" />
 			<path>c:\inetpub\gplan</path>
 		</website>
 	</iis>
-	<shares>
-		<user name="deployer" permissions="readonly" />
-		<share user="deployer" name="inetpub">c:\inetpub</share>
-	</shares>
+	
+	<sharing>
+		<users>
+			<user name="deployer" permissions="readonly" />
+			<user name="developer" permissions="all" />
+		</users>
+		<shares>
+			<share users="deployer,developer" name="inetpub">c:\inetpub</share>
+			<share users="developer" name="logs">c:\log</share>
+		</shares>
+	</sharing>
 </server>
 
 
