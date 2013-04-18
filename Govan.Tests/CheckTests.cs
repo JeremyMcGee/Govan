@@ -1,19 +1,13 @@
 ﻿namespace Govan.Tests
 {
-    using System;
-    using System.Collections.Generic;
     using System.IO;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-
-    using ManyConsole;
-    using NUnit.Framework;
-    using Moq;
 
     using Commands;
-    using Runners;
     using Entities;
+    using ManyConsole;
+    using Moq;
+    using NUnit.Framework;
+    using Runners;
 
     [TestFixture]
     public class CheckTests
@@ -29,7 +23,8 @@
 
             Mock<RunnerFactory> mockRunnerFactory = new Mock<RunnerFactory>(MockBehavior.Strict);
             mockRunnerFactory
-                .Setup(mrf => mrf.Create(actualRunnerType,
+                .Setup(mrf => mrf.Create(
+                    actualRunnerType,
                     It.Is<Computer>(c => (c.Name == "mycomputer") && (c.AdminPassword == "foobah"))))
                 .Returns(runner.Object);
 
@@ -64,13 +59,17 @@
 
             Mock<RunnerFactory> mockRunnerFactory = new Mock<RunnerFactory>(MockBehavior.Loose);
             mockRunnerFactory
-                .Setup(mrf => mrf.Create(RunnerType.PsExec,
-                    It.Is<Computer>(c => (c.Name == "mycomputer") && (c.AdminPassword == "foobah"))))
+                .Setup(
+                    mrf => mrf.Create(
+                            RunnerType.PsExec,
+                            It.Is<Computer>(c => (c.Name == "mycomputer") && (c.AdminPassword == "foobah"))))
                 .Returns(runner.Object);
 
             mockRunnerFactory
-                .Setup(mrf => mrf.Create(RunnerType.Powershell,
-                    It.Is<Computer>(c => (c.Name == "mycomputer") && (c.AdminPassword == "foobah"))))
+                .Setup(
+                    mrf => mrf.Create(
+                            RunnerType.Powershell,
+                            It.Is<Computer>(c => (c.Name == "mycomputer") && (c.AdminPassword == "foobah"))))
                 .Returns(runner.Object);
 
             // when

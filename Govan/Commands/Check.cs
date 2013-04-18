@@ -1,20 +1,16 @@
 ﻿namespace Govan.Commands
 {
-    using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-
-    using ManyConsole;
 
     using Runners;
-    using Entities;
-    using System.IO;
 
+    /// <summary>
+    /// Executes a check.
+    /// </summary>
     public class Check : AdminCommand
     {
         private List<RunnerType> runnerTypes = new List<RunnerType>();
+        
         private RunnerFactory runnerFactory = new RunnerFactory();
 
         public Check(RunnerFactory runnerFactory)
