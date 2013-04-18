@@ -50,6 +50,7 @@
     <Compile Include="Commands\AdminCommand.cs" />
     <Compile Include="Commands\Check.cs" />
     <Compile Include="Commands\Copy.cs" />
+    <Compile Include="Commands\ICopier.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Entities\Computer.cs" />

@@ -14,8 +14,7 @@
 
     public class Check : AdminCommand
     {
-        private RunnerType runnerType;
-        private string computerName;
+        private List<RunnerType> runnerTypes = new List<RunnerType>();
         private RunnerFactory runnerFactory = new RunnerFactory();
 
         public Check(RunnerFactory runnerFactory)
@@ -24,20 +23,24 @@
             this.runnerFactory = runnerFactory;
 
             IsCommand("check", "Checks that a host can be controlled.");
-            HasOption<RunnerType>("r|runnertype=", "Use a specific runner type: psexec | Powershell", r => runnerType = r);
+            HasOption<RunnerType>("r|runnertype=", "Use a specific runner type: psexec | Powershell", r => runnerTypes.Add(r));
         }
 
         public override int Run(string[] remainingArguments)
         {
-            IRunner runner = runnerFactory.Create(runnerType, computer);
-            runner.ExecuteCommand("systeminfo");
+            if (runnerTypes.Count == 0)
+            {
+                runnerTypes.Add(RunnerType.PsExec);
+                runnerTypes.Add(RunnerType.Powershell);
+            }
+
+            foreach (var runnerType in runnerTypes)
+            {
+                IRunner runner = runnerFactory.Create(runnerType, computer);
+                runner.ExecuteCommand("systeminfo");
+            }
 
             return 0;
         }
-    }
-
-    public interface ICopier
-    {
-        void Copy(string hostname, string adminPassword, string source, string destination);
     }
 }
