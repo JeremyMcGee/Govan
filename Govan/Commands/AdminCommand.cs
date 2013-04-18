@@ -1,30 +1,25 @@
 namespace Govan.Commands
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using ManyConsole;
-    using Runners;
     using Entities;
+    using ManyConsole;
 
-    abstract public class AdminCommand : ConsoleCommand
+    public abstract class AdminCommand : ConsoleCommand
     {
+        protected Computer Computer;
+
         private string computerName = string.Empty;
         private string adminPassword = string.Empty;
-        protected Computer computer;
-
-        public AdminCommand()
+        
+        protected AdminCommand()
         {
             // TODO extend to support manifests
-            HasRequiredOption<string>("c|computername=", "The name of the computer.", c => computerName = c);
+            HasRequiredOption<string>("c|computername=", "The name of the Computer.", c => computerName = c);
             HasRequiredOption<string>("a|adminpassword=", "The admin password.", p => adminPassword = p);
         }
 
         public override int? OverrideAfterHandlingArgumentsBeforeRun(string[] remainingArguments)
         {
-            computer = new Computer(name: computerName, adminPassword: adminPassword);
+            Computer = new Computer(name: computerName, adminPassword: adminPassword);
 
             return base.OverrideAfterHandlingArgumentsBeforeRun(remainingArguments);
         }

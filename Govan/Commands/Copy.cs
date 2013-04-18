@@ -1,20 +1,20 @@
 namespace Govan.Commands
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using ManyConsole;
-    using Runners;
-    using Entities;
-    using System.IO;
 
     public class Copy : AdminCommand
     {
         private string source;
+
         private string destination;
-        private ICopier copier;
+
+        private readonly ICopier copier;
+
+        public Copy()
+            : this(new Copier())
+        {
+        }
+
 
         public Copy(ICopier copier)
             : base()
@@ -30,7 +30,7 @@ namespace Govan.Commands
         {
             try
             {
-                copier.Copy(computer.Name, computer.AdminPassword, source, destination);
+                copier.Copy(Computer.Name, Computer.AdminPassword, source, destination);
             }
             catch (Exception ex)
             {

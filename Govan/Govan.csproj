@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="Commands\AdminCommand.cs" />
     <Compile Include="Commands\Check.cs" />
+    <Compile Include="Commands\Copier.cs" />
     <Compile Include="Commands\Copy.cs" />
     <Compile Include="Commands\ICopier.cs" />
     <Compile Include="Program.cs" />

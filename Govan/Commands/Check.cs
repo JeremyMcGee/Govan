@@ -9,9 +9,14 @@
     /// </summary>
     public class Check : AdminCommand
     {
-        private List<RunnerType> runnerTypes = new List<RunnerType>();
-        
-        private RunnerFactory runnerFactory = new RunnerFactory();
+        private readonly List<RunnerType> runnerTypes = new List<RunnerType>();
+
+        private readonly RunnerFactory runnerFactory = new RunnerFactory();
+
+        public Check()
+            : this(new RunnerFactory())
+        {
+        }
 
         public Check(RunnerFactory runnerFactory)
             : base()
@@ -32,7 +37,7 @@
 
             foreach (var runnerType in runnerTypes)
             {
-                IRunner runner = runnerFactory.Create(runnerType, computer);
+                IRunner runner = runnerFactory.Create(runnerType, Computer);
                 runner.ExecuteCommand("systeminfo");
             }
 
