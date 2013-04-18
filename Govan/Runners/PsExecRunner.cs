@@ -1,8 +1,7 @@
 namespace Govan.Runners
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
+    using System.CodeDom.Compiler;
+    using System.IO;
     using System.Text;
     using System.Threading.Tasks;
 
@@ -15,8 +14,17 @@ namespace Govan.Runners
         {
         }
 
-        public void ExecuteCommand(string command)
+        public void ExecuteCommand(string workingFolder, string command, string arguments)
         {
+            ChildProcessParameters childProcessParameters = new ChildProcessParameters
+                                                                {
+                                                                    FileName = command,
+                                                                    Arguments = arguments,
+                                                                    WorkingDirectory = workingFolder
+                                                                };
+
+            ChildProcessExecutor executor = new ChildProcessExecutor();
+            executor.ExecuteProcess(childProcessParameters);
         }
     }
 }

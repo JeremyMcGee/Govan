@@ -19,7 +19,7 @@
             // given
             Mock<IRunner> runner = new Mock<IRunner>(MockBehavior.Strict);
             runner
-                .Setup(r => r.ExecuteCommand("systeminfo"));
+                .Setup(r => r.ExecuteCommand(@"c:\temp", "systeminfo", ""));
 
             Mock<RunnerFactory> mockRunnerFactory = new Mock<RunnerFactory>(MockBehavior.Strict);
             mockRunnerFactory
@@ -55,7 +55,7 @@
             // given
             Mock<IRunner> runner = new Mock<IRunner>(MockBehavior.Strict);
             runner
-                .Setup(r => r.ExecuteCommand("systeminfo"));
+                .Setup(r => r.ExecuteCommand(@"c:\temp", "systeminfo", ""));
 
             Mock<RunnerFactory> mockRunnerFactory = new Mock<RunnerFactory>(MockBehavior.Loose);
             mockRunnerFactory

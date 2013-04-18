@@ -15,8 +15,9 @@ namespace Govan.Runners
         {
         }
 
-        public void ExecuteCommand(string command)
+        public void ExecuteCommand(string workingFolder, string command, string arguments)
         {
+            Console.WriteLine("We're not yet executing Powershell commands. If we were, you'd do it here.");
         }
     }
 }

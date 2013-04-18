@@ -38,7 +38,7 @@
             foreach (var runnerType in runnerTypes)
             {
                 IRunner runner = runnerFactory.Create(runnerType, Computer);
-                runner.ExecuteCommand("systeminfo");
+                runner.ExecuteCommand(@"c:\temp", "systeminfo", "");
             }
 
             return 0;
