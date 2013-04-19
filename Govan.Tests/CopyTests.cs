@@ -2,8 +2,8 @@ namespace Govan.Tests
 {
     using System;
     using System.IO;
-
     using Commands;
+    using Govan.Entities;
     using ManyConsole;
     using Moq;
     using NUnit.Framework;
@@ -17,7 +17,7 @@ namespace Govan.Tests
             // given
             Mock<ICopier> copier = new Mock<ICopier>(MockBehavior.Strict);
             copier
-                .Setup(r => r.Copy("mycomputer", "foobah", @"c:\temp\foo.bat", @"\bah\thing.bat"));
+                .Setup(r => r.Copy(It.Is<Computer>(c => c.Name == "mycomputer"), @"c:\temp\foo.bat", @"\bah\thing.bat"));
 
             // when
             Copy copy = new Copy(copier.Object);
@@ -46,7 +46,7 @@ namespace Govan.Tests
             // given
             Mock<ICopier> copier = new Mock<ICopier>(MockBehavior.Strict);
             copier
-                .Setup(r => r.Copy("mycomputer", "foobah", @"c:\temp\foo.bat", @"\bah\thing.bat"))
+                .Setup(r => r.Copy(It.Is<Computer>(c => c.Name == "mycomputer"), @"c:\temp\foo.bat", @"\bah\thing.bat"))
                 .Throws<InvalidOperationException>();
 
             // when

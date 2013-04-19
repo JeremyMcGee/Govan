@@ -12,6 +12,6 @@ namespace Govan.Commands
 
     public interface ICopier
     {
-        void Copy(string hostname, string adminPassword, string source, string destination);
+        void Copy(Computer computer, string source, string destination);
     }
 }

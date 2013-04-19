@@ -30,7 +30,7 @@ namespace Govan.Commands
         {
             try
             {
-                copier.Copy(Computer.Name, Computer.AdminPassword, source, destination);
+                copier.Copy(Computer, source, destination);
             }
             catch (Exception ex)
             {
