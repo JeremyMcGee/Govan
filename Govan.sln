@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Settings.StyleCop = Settings.StyleCop
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Govan.MachineDependentTests", "Govan.MachineDependentTests\Govan.MachineDependentTests.csproj", "{A1C1FE2D-67F9-4B38-9D08-1D7CEF07446C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{CEBC57B1-BE49-4052-A095-77EDE8EECC81}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CEBC57B1-BE49-4052-A095-77EDE8EECC81}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CEBC57B1-BE49-4052-A095-77EDE8EECC81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1C1FE2D-67F9-4B38-9D08-1D7CEF07446C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1C1FE2D-67F9-4B38-9D08-1D7CEF07446C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1C1FE2D-67F9-4B38-9D08-1D7CEF07446C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1C1FE2D-67F9-4B38-9D08-1D7CEF07446C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

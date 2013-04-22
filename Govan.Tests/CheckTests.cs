@@ -19,13 +19,16 @@
             // given
             Mock<IRunner> runner = new Mock<IRunner>(MockBehavior.Strict);
             runner
-                .Setup(r => r.ExecuteCommand(@"c:\temp", "systeminfo", ""));
+                .Setup(r => r.ExecuteCommand(@"c:\temp", "systeminfo", string.Empty));
 
             Mock<RunnerFactory> mockRunnerFactory = new Mock<RunnerFactory>(MockBehavior.Strict);
             mockRunnerFactory
                 .Setup(mrf => mrf.Create(
                     actualRunnerType,
-                    It.Is<Computer>(c => (c.Name == "mycomputer") && (c.AdminPassword == "foobah"))))
+                    It.Is<Computer>(c => 
+                        (c.Name == "mycomputer") 
+                        && (c.NetworkCredential.Password == "foobah")
+                        && (c.NetworkCredential.UserName == "Administrator"))))
                 .Returns(runner.Object);
 
             // when
@@ -55,21 +58,27 @@
             // given
             Mock<IRunner> runner = new Mock<IRunner>(MockBehavior.Strict);
             runner
-                .Setup(r => r.ExecuteCommand(@"c:\temp", "systeminfo", ""));
+                .Setup(r => r.ExecuteCommand(@"c:\temp", "systeminfo", string.Empty));
 
             Mock<RunnerFactory> mockRunnerFactory = new Mock<RunnerFactory>(MockBehavior.Loose);
             mockRunnerFactory
                 .Setup(
                     mrf => mrf.Create(
                             RunnerType.PsExec,
-                            It.Is<Computer>(c => (c.Name == "mycomputer") && (c.AdminPassword == "foobah"))))
+                            It.Is<Computer>(c =>
+                                (c.Name == "mycomputer")
+                                && (c.NetworkCredential.Password == "foobah")
+                                && (c.NetworkCredential.UserName == "Administrator"))))
                 .Returns(runner.Object);
 
             mockRunnerFactory
                 .Setup(
                     mrf => mrf.Create(
                             RunnerType.Powershell,
-                            It.Is<Computer>(c => (c.Name == "mycomputer") && (c.AdminPassword == "foobah"))))
+                            It.Is<Computer>(c =>
+                                (c.Name == "mycomputer")
+                                && (c.NetworkCredential.Password == "foobah")
+                                && (c.NetworkCredential.UserName == "Administrator"))))
                 .Returns(runner.Object);
 
             // when

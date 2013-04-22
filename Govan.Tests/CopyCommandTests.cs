@@ -9,7 +9,7 @@ namespace Govan.Tests
     using NUnit.Framework;
 
     [TestFixture]
-    public class CopyTests
+    public class CopyCommandTests
     {
         [Test]
         public void CanCallCopier()

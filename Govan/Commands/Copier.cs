@@ -7,7 +7,7 @@ namespace Govan.Commands
     {
         public void Copy(Computer computer, string source, string destination)
         {
-            Console.WriteLine("Copying from {0} to {1} on Computer {2}...", source, destination, computer.Name);
+            Console.WriteLine("Copying from {0} to {1} on computer {2}...", source, destination, computer.Name);
 
 
         }
