@@ -39,12 +39,8 @@
 
             Copier copier = new Copier();
             copier.Copy(computer, source, destination);
-        }
 
-        [Test]
-        public void CanCopyFileToLocalUnc()
-        {
-
+            Assert.That(File.Exists(destination));
         }
     }
 }

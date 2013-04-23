@@ -56,7 +56,7 @@
   <ItemGroup>
     <Compile Include="CheckTests.cs" />
     <Compile Include="CopyCommandTests.cs" />
-    <Compile Include="PrepTests.cs" />
+    <Compile Include="PrepCommandTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SyncApplicationPoolTests.cs" />
     <Compile Include="SyncCertificateTests.cs" />
