@@ -10,7 +10,7 @@ namespace Govan.Commands
         {
             Console.WriteLine("Copying from {0} to {1} on computer {2}...", source, destination, computer.Name);
 
-            
+
         }
     }
 }
