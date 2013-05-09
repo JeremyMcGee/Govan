@@ -55,6 +55,7 @@
     <Compile Include="Commands\Copy.cs" />
     <Compile Include="Commands\ICopier.cs" />
     <Compile Include="Commands\Prep.cs" />
+    <Compile Include="NetworkDrive.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Entities\Computer.cs" />

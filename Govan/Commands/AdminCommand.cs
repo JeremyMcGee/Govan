@@ -1,18 +1,16 @@
 namespace Govan.Commands
 {
-    using Entities;
-    using ManyConsole;
     using System.Net;
 
+    using Entities;
+    using ManyConsole;
+    
     public abstract class AdminCommand : ConsoleCommand
     {
-        protected Computer Computer;
-
         private string computerName = string.Empty;
         private string adminUsername = "Administrator";
         private string adminPassword = string.Empty;
 
-        
         protected AdminCommand()
         {
             // TODO extend to support manifests
@@ -20,6 +18,8 @@ namespace Govan.Commands
             HasOption<string>("u|adminusername=", "The admin username, if not Administrator.", u => adminUsername = u);
             HasRequiredOption<string>("a|adminpassword=", "The admin password.", p => adminPassword = p);
         }
+
+        protected Computer Computer { get; private set; }
 
         public override int? OverrideAfterHandlingArgumentsBeforeRun(string[] remainingArguments)
         {
